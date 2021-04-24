@@ -1,27 +1,31 @@
 package com;
 
-import java.sql.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+import model.Project;
+
+//For JSON
+import com.google.gson.*;
+
+//For XML
+import org.jsoup.*;
+import org.jsoup.parser.*;
+import org.jsoup.nodes.Document;
+
+@Path("/Project")
 public class ProjectService {
 
-	// DB connection
-	private Connection connect() {
+	Project pobj = new Project();
 
-		Connection con = null;
+	@GET
+	@Path("/")
+	@Produces(MediaType.TEXT_HTML)
+	public String readProject() {
 
-		try {
+		return pobj.readProject();
 
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/GadgetBadget", "root", "1234");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return con;
-
-	}
-
-	public String insertItem() {
-		
 	}
 }
