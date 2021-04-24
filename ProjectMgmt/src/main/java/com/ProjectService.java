@@ -25,7 +25,6 @@ public class ProjectService {
 	@Produces(MediaType.TEXT_HTML)
 	public String readProject() {
 
-		
 		return pobj.readProject();
 
 	}

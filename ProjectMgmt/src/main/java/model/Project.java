@@ -84,7 +84,7 @@ public class Project {
 			}
 
 			// HTML table to view
-			output = "<table border ='s'> <tr> <th> Project ID </th> <th> Project Name </th> <th> Description </th>"
+			output = "<table border ='1'; width:1000px;> <tr> <th> Project ID </th> <th> Project Name </th> <th> Description </th>"
 					+ "<th>Patent Number</th> <th>Cost</th> <th>Update</th> <th>Delete</th> </tr>";
 
 			String query = "select * from project";
@@ -124,7 +124,7 @@ public class Project {
 
 	}
 
-}
+
 
 	public String UpdateProject(String projID, String name, String description, String patent_no, String cost) {
 
@@ -176,7 +176,7 @@ public String deleteProject(String projID) {
 		Connection con = connect();
 		
 		if(con == null)
-		{return ="Error while connecting to DB for delete";}
+		{return "Error while connecting to DB for delete";}
 		
 		String query = "DELETE from project where projID=?";
 		
@@ -197,4 +197,5 @@ public String deleteProject(String projID) {
 	}
 	
 	return output;
+}
 }
