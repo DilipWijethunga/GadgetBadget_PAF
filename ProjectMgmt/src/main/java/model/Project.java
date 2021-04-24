@@ -28,6 +28,7 @@ public class Project {
 
 	}
 
+	//Insert items to DB
 	public String insertItem(String name, String description, String patent_no, String cost) {
 
 		String output = "";
@@ -128,3 +129,5 @@ public class Project {
 		
 	}
 }
+
+
