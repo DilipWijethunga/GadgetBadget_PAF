@@ -1,7 +1,6 @@
 package com;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -28,4 +27,18 @@ public class ProjectService {
 		return pobj.readProject();
 
 	}
+
+	@POST
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String insertItem(@FormParam("proj_name") String proj_name, 
+			@FormParam("description") String description,
+			@FormParam("patent_no") String patent_no, 
+			@FormParam("cost") String cost) 
+	{
+		String output = pobj.insertProject(proj_name, description, patent_no, cost);
+		return output;
+	}
+
 }

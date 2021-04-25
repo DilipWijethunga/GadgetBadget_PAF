@@ -43,16 +43,16 @@ public class Project {
 				}
 
 				// prepared statement
-				String query = "insert into project ('p_id', 'proj_name', 'description', 'patent_no', 'cost')"
-						+ "values (?, ?, ?, ?, ?)";
+				String query = "insert into project (`proj_name`, `description`, `patent_no`, `cost`)"
+						+ "values (?, ?, ?, ?)";
 
 				PreparedStatement stmt = con.prepareStatement(query);
 
-				stmt.setInt(1, 0);
-				stmt.setString(2, name);
-				stmt.setString(3, description);
-				stmt.setString(4, patent_no);
-				stmt.setDouble(5, Double.parseDouble(cost));
+				// stmt.setInt(1, 0);
+				stmt.setString(1, name);
+				stmt.setString(2, description);
+				stmt.setString(3, patent_no);
+				stmt.setDouble(4, Double.parseDouble(cost));
 
 				// Execute the statement
 				stmt.execute();
@@ -124,8 +124,6 @@ public class Project {
 
 	}
 
-
-
 	public String UpdateProject(String projID, String name, String description, String patent_no, String cost) {
 
 		String output = "";
@@ -167,35 +165,34 @@ public class Project {
 
 	}
 
-public String deleteProject(String projID) {
-	
-	String output = "";
-	
-	try {
-		
-		Connection con = connect();
-		
-		if(con == null)
-		{return "Error while connecting to DB for delete";}
-		
-		String query = "DELETE from project where projID=?";
-		
-		PreparedStatement stmt = con.prepareStatement(projID);
-		
-		stmt.setInt(1, Integer.parseInt(projID));
-		
-		stmt.execute();
-		con.close();
-		
-		output = "Deleted successfully";
-		
-		
-		
-	} catch (Exception e) {
-		output = "Delete error!";
-		System.err.println(e.getMessage());
+	public String deleteProject(String projID) {
+
+		String output = "";
+
+		try {
+
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to DB for delete";
+			}
+
+			String query = "DELETE from project where projID=?";
+
+			PreparedStatement stmt = con.prepareStatement(projID);
+
+			stmt.setInt(1, Integer.parseInt(projID));
+
+			stmt.execute();
+			con.close();
+
+			output = "Deleted successfully";
+
+		} catch (Exception e) {
+			output = "Delete error!";
+			System.err.println(e.getMessage());
+		}
+
+		return output;
 	}
-	
-	return output;
-}
 }
