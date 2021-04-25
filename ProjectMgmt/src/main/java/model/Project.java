@@ -84,8 +84,20 @@ public class Project {
 			}
 
 			// HTML table to view
-			output = "<table border ='1'; width:1000px;> <tr> <th> Project ID </th> <th> Project Name </th> <th> Description </th>"
-					+ "<th>Patent Number</th> <th>Cost</th> <th>Update</th> <th>Delete</th> </tr>";
+			
+			output = "<table border='1'><tr><th>Project ID</th>"
+					+ "<th>Project Name</th>" +
+					"<th>Description</th>" +
+					"<th>Patent Number</th>" +
+					"<th>Cost</th>"+
+					"<th>Update</th>"+
+					"<th>Delete</th></tr>";
+			
+			
+			/*
+			output = "<table border ='1'> <tr> <th>  </th> <th> Project Name </th> <th> Description </th>"
+					+ "<th>Patent Number</th> <th>Cost</th> <th>Update</th> <th>Delete</th> </tr>";*/
+			
 
 			String query = "select * from project";
 			Statement stmt = con.createStatement();
@@ -104,8 +116,9 @@ public class Project {
 				output += "<td>" + projName + "</td>";
 				output += "<td>" + Description + "</td>";
 				output += "<td>" + PatentNo + "</td>";
-				output += "<td>" + Cost + "</td> </tr>";
-
+				output += "<td>" + Cost + "</td>";
+				
+				//update delete buttons
 				output += "<td><input name='btnUpdate' type='button' value='Update'	class='btn btn-secondary'></td>"
 						+ "<td><form method='post' action='project.jsp'>"
 						+ "<input name='btnRemove' type='submit' value='Remove'	class='btn btn-danger'>"
